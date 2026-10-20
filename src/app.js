@@ -43,7 +43,7 @@ app.get('/', (req, res) => {
       actualizar: 'PATCH /api/videojuegos/:id',
       eliminar: 'DELETE /api/videojuegos/:id',
     },
-    autenticacion: 'Authorization: Bearer <API_KEY>',
+    autenticacion: 'Lectura pública; escritura: Authorization: Bearer <API_KEY>',
   });
 });
 
@@ -55,8 +55,6 @@ app.get('/healthz', async (req, res) => {
     return res.status(503).json({ status: 'error', database: 'unavailable' });
   }
 });
-
-app.use('/api', requireApiKey);
 
 app.get('/api/videojuegos', async (req, res) => {
   const result = await pool.query(`SELECT ${selectColumns} FROM videojuegos ORDER BY id ASC`);
@@ -76,6 +74,8 @@ app.get('/api/videojuegos/:id', async (req, res) => {
   }
   return res.json({ data: result.rows[0] });
 });
+
+app.use('/api', requireApiKey);
 
 app.post('/api/videojuegos', async (req, res) => {
   const videojuego = validateVideojuego(req.body);
