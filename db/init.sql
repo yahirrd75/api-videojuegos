@@ -12,7 +12,19 @@ INSERT INTO videojuegos (id, titulo, genero, plataforma, desarrollador, anio_lan
 VALUES
   (1, 'The Legend of Zelda: Breath of the Wild', 'Acción y aventura', 'Nintendo Switch', 'Nintendo', 2017),
   (2, 'Minecraft', 'Sandbox', 'PC, consola y móvil', 'Mojang Studios', 2011),
-  (3, 'God of War Ragnarök', 'Acción y aventura', 'PlayStation 4 y 5', 'Santa Monica Studio', 2022)
+  (3, 'God of War Ragnarök', 'Acción y aventura', 'PlayStation 4 y 5', 'Santa Monica Studio', 2022),
+  (4, 'Super Mario Odyssey', 'Plataformas', 'Nintendo Switch', 'Nintendo', 2017),
+  (5, 'The Witcher 3: Wild Hunt', 'Rol y acción', 'PC, PlayStation, Xbox y Switch', 'CD Projekt Red', 2015),
+  (6, 'Elden Ring', 'Rol y acción', 'PC, PlayStation y Xbox', 'FromSoftware', 2022),
+  (7, 'Cyberpunk 2077', 'Rol y acción', 'PC, PlayStation y Xbox', 'CD Projekt Red', 2020),
+  (8, 'Hollow Knight', 'Metroidvania', 'PC, PlayStation, Xbox y Switch', 'Team Cherry', 2017),
+  (9, 'Stardew Valley', 'Simulación y rol', 'PC, consolas y móvil', 'ConcernedApe', 2016),
+  (10, 'Portal 2', 'Puzles y plataformas', 'PC, PlayStation 3 y Xbox 360', 'Valve', 2011),
+  (11, 'Red Dead Redemption 2', 'Acción y aventura', 'PC, PlayStation 4 y Xbox One', 'Rockstar Games', 2018),
+  (12, 'Hades', 'Roguelike y acción', 'PC, PlayStation, Xbox y Switch', 'Supergiant Games', 2020),
+  (13, 'Celeste', 'Plataformas', 'PC, PlayStation, Xbox y Switch', 'Extremely OK Games', 2018),
+  (14, 'Pokémon Scarlet', 'Rol y aventura', 'Nintendo Switch', 'Game Freak', 2022),
+  (15, 'Final Fantasy VII Remake', 'Rol y acción', 'PlayStation 4 y 5, PC', 'Square Enix', 2020)
 ON CONFLICT (id) DO NOTHING;
 
 SELECT setval(

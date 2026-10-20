@@ -15,7 +15,7 @@ API REST en Node.js, Express y PostgreSQL. La API corre localmente y PostgreSQL 
 4. Arranca la API: `npm run dev` o `npm start`.
 5. Revisa `http://localhost:3000/healthz`; debe responder `{"status":"ok","database":"connected"}`.
 
-Docker usa la imagen `postgres:16-alpine` y guarda los datos en el volumen nombrado `videojuegos_pgdata`. Los registros iniciales se crean al iniciar la base por primera vez. La API también crea la tabla y agrega los registros de ejemplo si la base está vacía. Para borrar intencionalmente el volumen y todos los datos locales: `docker compose down -v`.
+Docker usa la imagen `postgres:16-alpine` y guarda los datos en el volumen nombrado `videojuegos_pgdata`. Se incluyen 15 videojuegos de ejemplo. La API crea la tabla y agrega los registros que falten sin borrar los existentes. Para borrar intencionalmente el volumen y todos los datos locales: `docker compose down -v`.
 
 ## Endpoints
 
@@ -71,8 +71,10 @@ Cuando la API esté desplegada, crea una credencial **Header Auth** en n8n:
 En un nodo **HTTP Request**, selecciona esa credencial y configura:
 
 - **Method:** `GET`
-- **URL:** `https://<servicio>.onrender.com/api/videojuegos/1`
+- **URL:** `https://<servicio>.onrender.com/api/videojuegos` para consultar los 15 juegos, o agrega `/1`, `/3`, etc. para consultar uno por ID.
 - **Authentication:** `Generic Credential Type` → `Header Auth`
+
+La lista llega dentro del campo `data`. Para procesar un juego por item, agrega un nodo **Split Out** después de **HTTP Request** y usa `data` en **Fields To Split Out**.
 
 Para crear registros, usa `POST /api/videojuegos` y envía un cuerpo JSON con los cinco campos. En n8n puede usarse **Body Content Type: JSON**.
 
